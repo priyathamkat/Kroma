@@ -12,6 +12,7 @@ class Kroma:
         weights = tf.SparseTensor(self.weights_indices, self.weights_values, self.weights_shape)
         x = self.initial_x
         for i in range(config.num_iterations):
+            # Jacobi iteration
             x = self.b - tf.sparse_tensor_dense_matmul(weights, x)
         self._final_x = x
 
